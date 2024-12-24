@@ -1,18 +1,16 @@
-import React, { useState } from "react";
-import Tester from "../src/components/tester";
+import React from "react";
+import RiskForm from "./components/RiskForm";
 
-const App: React.FC = () => {
-  const [count, setCount] = useState(0);
-
-  const handleClick = () => {
-    setCount((prevCount) => prevCount + 1);
-  };
-
+function App() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 to-blue-100">
-      <Tester title="Counter Component" count={count} onClick={handleClick} />
-    </div>
+    <main className="min-h-screen bg-gray-100 p-8">
+      <h1 className="text-3xl font-bold text-center mb-4">
+        Dynamic Risk Assessment (Frontend)
+      </h1>
+      {/* Render our form component */}
+      <RiskForm />
+    </main>
   );
-};
+}
 
 export default App;
