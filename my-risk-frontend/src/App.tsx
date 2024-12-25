@@ -1,5 +1,6 @@
 import React from "react";
 import RiskForm from "./components/RiskForm";
+import CoverageForm from "./components/CoverageForm";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       </h1>
       {/* Render our form component */}
       <RiskForm />
+      <CoverageForm />
     </main>
   );
 }

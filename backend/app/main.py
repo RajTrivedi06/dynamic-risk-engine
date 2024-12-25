@@ -1,16 +1,24 @@
-# app/main.py
+# backend/app/main.py
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .routes import router
+from dotenv import load_dotenv
+import os
 
-app = FastAPI()
+from .routes import router  # just the router, no data_loader import
 
-# If your frontend is at http://127.0.0.1:5173, add it here
+# Load .env file if present
+load_dotenv()
+
+app = FastAPI(
+    title="Dynamic Risk Assessment Engine",
+    description="Backend for Dynamic Risk Assessment + Coverage",
+    version="1.0.0"
+)
+
 origins = [
     "http://127.0.0.1:5173",
     "http://localhost:5173"
-    # Add more origins if needed
 ]
 
 app.add_middleware(
@@ -21,4 +29,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Just include the router
 app.include_router(router, prefix="/api")
+
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the Dynamic Risk & Coverage Backend!"}
